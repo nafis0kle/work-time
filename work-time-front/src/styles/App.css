@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    display: block;
+    justify-content: center;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+}
+
+.task {
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-enter {
+    transform: translateX(-350px);
+}
+.task-enter-active {
+    transform: translateX(0px);
+    transition: all 500ms ease-in;
+}
+.task-exit {
+    opacity: 1;
+}
+.task-exit-active {
+    transform: translateX(-350px);
+    transition: all 500ms ease-in;
+}
+
+.user {
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-enter {
+    transform: translateX(-350px);
+}
+.user-enter-active {
+    transform: translateX(0px);
+    transition: all 500ms ease-in;
+}
+.user-exit {
+    opacity: 1;
+}
+.user-exit-active {
+    transform: translateX(-350px);
+    transition: all 500ms ease-in;
+}
