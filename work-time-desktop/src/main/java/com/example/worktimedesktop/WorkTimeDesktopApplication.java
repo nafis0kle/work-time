@@ -1,21 +1,17 @@
 package com.example.worktimedesktop;
 
-import java.awt.Desktop;
-import java.net.URI;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
+@EnableScheduling
 @SpringBootApplication
 public class WorkTimeDesktopApplication {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-        login login = new login();
-        login.start();
-        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-            Desktop.getDesktop().browse(new URI("http://localhost:3000/employee"));
-        }
+    public static void main(String[] args) {
+        SpringApplication.run(WorkTimeDesktopApplication.class, args);
+        System.setProperty("java.awt.headless", "false");
+        Login login = new Login();
         //Runtime.getRuntime().exec("Rundll32.exe powrprof.dll,SetSuspendState Sleep");
     }
 
