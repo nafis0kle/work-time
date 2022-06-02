@@ -25,8 +25,8 @@ public class MyScheduler {
                     .retrieve()
                     .bodyToMono(byte[].class)
                     .block();
-        } else {
-            oldTime = currentTime;
+            System.out.println("call");
         }
+        oldTime = currentTime;
     }
 }

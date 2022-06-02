@@ -40,7 +40,7 @@ const TaskFormEmpl = ({create, projects, types}) => {
                 />
                 <br/>
                 <Dropdown>
-                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                    <Dropdown.Toggle variant="light" id="dropdown-basic">
                         Выбрать проект
                     </Dropdown.Toggle>
 
@@ -52,7 +52,7 @@ const TaskFormEmpl = ({create, projects, types}) => {
                 </Dropdown>
                 <br/>
                 <Dropdown>
-                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                    <Dropdown.Toggle variant="light" id="dropdown-basic">
                         Выбрать тип задачи
                     </Dropdown.Toggle>
 

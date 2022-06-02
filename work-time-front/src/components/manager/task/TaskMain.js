@@ -9,23 +9,30 @@ import TaskList from "./TaskList";
 import ProjectService from "../../../API/ProjectService";
 import ProjectListDropdown from "../../employee/task/ProjectListDropdown";
 import TypeService from "../../../API/TypeService";
+import ProjectForm from "../project/ProjectForm";
 
 function TaskMain() {
     const [tasks, setTasks] = useState([]);
     const [projects, setProjects] = useState([]);
     const [types, setTypes] = useState([]);
-    const [modal, setModal] = useState(false);
+    const [taskModal, setTaskModal] = useState(false);
+    const [projectModal, setProjectModal] = useState(false);
     const [removeButton, setRemoveButton] = useState(false);
 
     useEffect(() => {
         fetchTasks();
         fetchProjects();
         fetchTypes();
-    }, [modal, removeButton])
+    }, [taskModal, removeButton, projectModal])
 
     const createTask = async (newTask) => {
         await TaskService.create(newTask);
-        setModal(false);
+        setTaskModal(false);
+    }
+
+    const createProject = async (newProject) => {
+        await ProjectService.create(newProject);
+        setProjectModal(false);
     }
 
     async function fetchTasks() {
@@ -58,12 +65,23 @@ function TaskMain() {
     <div>
         <Header/>
         <ProjectListDropdown updateTasks={fetchTasksByProject} projects={projects}/>
-        <MyButton style={{marginTop: 30}} onClick={() => setModal(true)}>
+
+        {/*Task modal*/}
+        <MyButton style={{marginTop: 30}} onClick={() => setTaskModal(true)}>
             Добавить задачу
         </MyButton>
-        <MyModal visible={modal} setVisible={setModal}>
+        <MyModal visible={taskModal} setVisible={setTaskModal}>
             <TaskForm create={createTask} projects={projects} types={types}/>
         </MyModal>
+
+        {/*Project modal*/}
+        <MyButton style={{marginTop: 30}} onClick={() => setProjectModal(true)}>
+            Добавить проект
+        </MyButton>
+        <MyModal visible={projectModal} setVisible={setProjectModal}>
+            <ProjectForm create={createProject}/>
+        </MyModal>
+
         <TaskList remove={removeTask} tasks={tasks} removeButton={removeButton} setRemoveButton={setRemoveButton}/>
     </div>
   );
