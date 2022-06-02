@@ -29,4 +29,10 @@ public class Task {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User employee;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Project project;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Type type;
 }

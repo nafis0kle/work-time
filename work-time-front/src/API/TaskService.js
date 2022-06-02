@@ -15,6 +15,11 @@ export default class TaskService {
         return response.data._embedded.tasks;
     }
 
+    static async getAllByProject(project) {
+        const response = await axios.get("http://localhost:8080/tasks/search/findAllByProject?project=" + project);
+        return response.data._embedded.tasks;
+    }
+
     static async getAllByStatusIn(statuses) {
         const response = await axios.get("http://localhost:8080/tasks/search/findAllByStatusIn?statuses=" + statuses);
         return response.data._embedded.tasks;

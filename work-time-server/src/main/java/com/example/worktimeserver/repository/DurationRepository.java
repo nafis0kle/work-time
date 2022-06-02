@@ -1,6 +1,7 @@
 package com.example.worktimeserver.repository;
 
 import com.example.worktimeserver.domain.entity.Duration;
+import com.example.worktimeserver.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +12,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DurationRepository extends JpaRepository<Duration, Integer> {
-    Duration findByEmployeeIdAndIsLast(Integer id, boolean isLast);
+    Duration findByIsLast(Boolean isLast);
 }

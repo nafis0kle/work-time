@@ -15,6 +15,7 @@ export default class Header extends React.Component{
                                 <Nav.Link as={Link} to="/manager/requests">Запросы</Nav.Link>
                                 <Nav.Link href="/manager/employees-list">Сотрудник</Nav.Link>
                                 <Nav.Link href="/manager/managers-list">Менеджер</Nav.Link>
+                                <Nav.Link href="/manager/durations">Учет рабочего времени</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

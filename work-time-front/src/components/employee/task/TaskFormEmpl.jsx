@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import MyInput from "../../UI/input/MyInput";
 import MyButton from "../../UI/button/MyButton";
+import {Dropdown} from "react-bootstrap";
 
-const TaskFormEmpl = ({create}) => {
+const TaskFormEmpl = ({create, projects, types}) => {
     const [task, setTask] = useState({title: '',
         body: '',
         category: '',
@@ -37,12 +38,31 @@ const TaskFormEmpl = ({create}) => {
                     type="text"
                     placeholder="Описание задачи"
                 />
-                <MyInput
-                    value={task.category}
-                    onChange={e => setTask({...task, category: e.target.value})}
-                    type="text"
-                    placeholder="Категория"
-                />
+                <br/>
+                <Dropdown>
+                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                        Выбрать проект
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        {projects.map(project =>
+                            <Dropdown.Item onClick={() => setTask({...task, project: project._links.self.href})}>{project.name}</Dropdown.Item>
+                        )}
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br/>
+                <Dropdown>
+                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                        Выбрать тип задачи
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        {types.map(type =>
+                            <Dropdown.Item onClick={() => setTask({...task, type: type._links.self.href})}>{type.name}</Dropdown.Item>
+                        )}
+                    </Dropdown.Menu>
+                </Dropdown>
+                <br/>
                 <MyButton onClick={addNewTask}>Отправить на утверждение менеджеру</MyButton>
             </form>
         </div>
